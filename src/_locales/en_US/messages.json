@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Brave Wayback Machine Extension",
+    "description": "The name of this extension"
+  },
+  "appDescription": {
+    "message": "Reduce annoying 404 pages by automatically checking for an archived copy in the Wayback Machine.",
+    "description": "The description of this extension"
+  }
+}
