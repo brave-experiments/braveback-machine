@@ -22,13 +22,13 @@ module.exports = {
 
   entry: {
     background: './src/background/index.ts',
-    ui: './src/ui/index.ts',
+    content: './src/content/index.ts',
     utils: './src/utils/index.ts'
   },
 
   output: {
-    path: path.resolve(__dirname, 'dist/js'),
-    filename: '[name].bundle.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/[name].bundle.js'
   },
 
   resolve: {
@@ -51,6 +51,10 @@ module.exports = {
       {
         from: './manifest.json',
         to: path.resolve(__dirname, 'dist')
+      },
+      {
+        from: './src/css/banner.css',
+        to: path.resolve(__dirname, 'dist/css')
       },
       {
         from: path.resolve(__dirname, 'src/_locales/**/*'),
@@ -78,6 +82,13 @@ module.exports = {
           'style-loader',
           'css-loader'
         ]
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'img/[name].[ext]'
+        }
       }
     ]
   }

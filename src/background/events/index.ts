@@ -9,14 +9,17 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
   if (!statusCode.includes(details.statusCode)) {
     return
   }
-  chrome.runtime.onMessage.addListener(message => {
-    if (message.authorizeRedirect) {
-      return shouldRedirectUsers(details.tabId, details.url)
-    }
+
+  chrome.tabs.query({}, tabs => {
+    chrome.tabs.insertCSS(details.tabId, { file: 'css/banner.css' })
+    chrome.tabs.executeScript(details.tabId, { file: 'js/content.bundle.js', runAt: 'document_end' }, () => {
+      chrome.runtime.onMessage.addListener(message => {
+        if (message.authorizeRedirect) {
+          return shouldRedirectUsers(details.tabId, details.url)
+        }
+      })
+    })
   })
-  return {
-    redirectUrl: chrome.extension.getURL('../brave-404.html')
-  }
 },
 {
   urls: [ '<all_urls>' ],
