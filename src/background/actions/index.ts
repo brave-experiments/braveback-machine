@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { isEmpty } from '../../utils/objectUtils'
+import { isEmpty } from '../../utils'
 import { updateURL } from '../api'
 
 export function shouldRedirectUsers (tabId: number, url: string) {
@@ -16,6 +16,7 @@ export function shouldRedirectUsers (tabId: number, url: string) {
        } else {
          // the wayback machine has no records of this website,
          // in this case we redirect to our custom URL
+         // TODO: we need a proper spec for this
          const defaultPage: string = '../no-archive.html'
          updateURL(tabId, defaultPage)
          console.info('Redirected to Brave\'s 404 page: no archived version of this page is available')
