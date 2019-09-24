@@ -1,7 +1,7 @@
 {
   "name": "Brave Wayback Machine Extension",
   "description": "__MSG_appDescription__",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "manifest_version": 2,
   "default_locale": "en_US",
   "browser_action": {},
@@ -19,6 +19,6 @@
     "webRequest",
     "webRequestBlocking",
     "tabs",
-    "<all_urls>"
+    "*://*/*"
   ]
 }
